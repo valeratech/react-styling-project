@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from '../../UI/Button/Button';
 // import './CourseInput.css';
 
+// Ex.2 Replace <Div> component that references a 'form-control' class with a styled-component
 const FormControl = styled.div`
     
       margin: 0.5rem 0;
@@ -11,14 +12,16 @@ const FormControl = styled.div`
       font-weight: bold;
       display: block;
       margin-bottom: 0.5rem;
-      color: ${props => (props.valid ? 'red' : 'black')};
+      //Ex.3 Reference the prop from the <FormControl> using an arrow function to show the validation styling
+      color: ${props => props.invalid ? 'red' : 'black'};
     }
 
     & input {
       display: block;
       width: 100%;
-      border: 1px solid ${props => (props.valid ? 'red' : '#ccc')};
-      background: ${props => (props.valid ? 'red' : 'transparent')};
+      //Ex.3 Reference the prop from the <FormControl> using an arrow function to show the validation styling 
+      border: 1px solid ${props => props.invalid ? 'red' : 'black'};
+      background-color: ${props => props.invalid ? 'pink' : 'transparent'};
       font: inherit;
       line-height: 1.5rem;
       padding: 0 0.25rem;
@@ -29,15 +32,6 @@ const FormControl = styled.div`
       background: #fad0ec;
       border-color: #8b005d;
     }
-
-    //&.invalid input {
-    //  border-color: red;
-    //  background-color: red;
-    //}
-    //
-    //&.invalid label {
-    //  color: red;
-    //}
   `;
 
 const CourseInput = props => {
@@ -66,8 +60,8 @@ const CourseInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <FormControl valid={!isValid}>
-        {/*Ex.1 Create a red WARNING conditional inline-style using isValid state */}
+      {/*Ex.2 Create a prop for FormControl  referenced in the styled-component block at the top of the module */}
+      <FormControl invalid={!isValid}>
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </FormControl>

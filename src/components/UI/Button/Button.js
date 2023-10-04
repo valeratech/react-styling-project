@@ -2,7 +2,10 @@ import React from 'react';
 import styled from "styled-components";
 // import './Button.css';
 
+// Ex.2 Replace <Button> component with a styled-component
 const Button = styled.button`
+    // Ex. 4 Set the width for mobile-devices based on the media-query configured below
+    width: 100%;
     font: inherit;
     padding: 0.5rem 1.5rem;
     border: 1px solid #8b005d;
@@ -10,6 +13,10 @@ const Button = styled.button`
     background: #8b005d;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
     cursor: pointer;
+    // Create a Styled-Component media query to dyanmically change based on the type of device
+    @media (min-width: 768px) {
+      width: auto;
+  }
 
   &:focus {
     outline: none;
